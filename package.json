@@ -4,7 +4,7 @@
   "description": "Generate SVG for joto.rocks",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node test.js"
   },
   "repository": {
     "type": "git",
@@ -19,5 +19,13 @@
   "bugs": {
     "url": "https://github.com/NTag/joto-svg/issues"
   },
-  "homepage": "https://github.com/NTag/joto-svg#readme"
+  "homepage": "https://github.com/NTag/joto-svg#readme",
+  "dependencies": {
+    "jsdom": "^16.4.0",
+    "svgpath": "^2.3.0",
+    "xmldoc": "^1.1.2"
+  },
+  "devDependencies": {
+    "@fortawesome/free-solid-svg-icons": "^5.14.0"
+  }
 }
