@@ -1,8 +1,9 @@
 const Typr = require('./Typr/Typr.U');
 const svgpath = require('svgpath');
 const fs = require('fs');
+const path = require('path');
 
-const font = Typr.parse(fs.readFileSync('./joto-text/SingleLine.otf'));
+const font = Typr.parse(fs.readFileSync(path.join(__dirname, 'SingleLine.otf')));
 
 module.exports = function (fontOveride, str, size, align, lineHeight, color, x, y, typescale, rotate) {
   str = str.replace(/(<br>\s*)+$/, '');
