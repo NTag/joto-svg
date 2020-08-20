@@ -38,10 +38,12 @@ You can use `joto.html` to see how your svg would render on the board.
 
 ## Examples
 
+Check `examples/` folder.
+
 <div align="center">
-  <img src="examples/weather-weekend.svg" width="30%">
-  <img src="examples/weather-france.svg" width="30%">
-  <img src="examples/weather-cities.svg" width="30%">
+  <img src="https://raw.githubusercontent.com/NTag/joto-svg/master/examples/weather-weekend.svg" width="30%">
+  <img src="https://raw.githubusercontent.com/NTag/joto-svg/master/examples/weather-france.svg" width="30%">
+  <img src="https://raw.githubusercontent.com/NTag/joto-svg/master/examples/weather-cities.svg" width="30%">
 </div>
 
 ## Acknowledgment
