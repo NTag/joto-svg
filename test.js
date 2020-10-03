@@ -13,10 +13,10 @@ joto.addString({
   align: 'center',
 });
 
-joto.addIcon({ x: 10, y: 120, size: 80, icon: faSun });
-joto.addIcon({ x: 140, y: 120, size: 80, icon: faCloudRain });
-joto.addIcon({ x: 270, y: 120, size: 80, icon: faCloudSun });
-joto.addIcon({ x: 400, y: 120, size: 80, icon: faCloudMoon });
+joto.addFAIcon({ x: 10, y: 120, size: 80, icon: faSun });
+joto.addFAIcon({ x: 140, y: 120, size: 80, icon: faCloudRain });
+joto.addFAIcon({ x: 270, y: 120, size: 80, icon: faCloudSun });
+joto.addFAIcon({ x: 400, y: 120, size: 80, icon: faCloudMoon });
 
 const svg = joto.getSVG();
 fs.writeFileSync('./joto.svg', svg, { encoding: 'utf8' });
