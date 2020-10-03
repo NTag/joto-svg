@@ -15,6 +15,7 @@ npm i joto-svg
 The canvas size is 500×500.
 
 ```js
+const fs = require('fs');
 const JotoSVG = require('joto-svg');
 
 const joto = new JotoSVG();
