@@ -23,10 +23,10 @@ module.exports = function Joto() {
   };
 
   return {
-    addString({ size, str, ...position }) {
-      const path = stringToSVG(null, str, size, 'left', 1, null, 0, 0, 1, 0);
+    addString({ size, str, align = 'left', ...position }) {
+      const path = stringToSVG(null, str, size, align, 1, null, 0, 0, 1, 0);
 
-      this.addPath({ d: path, ...position });
+      this.addPath({ d: path, align, ...position });
     },
     addOutlineString({ size, str, fontFilePath, ...position }) {
       if (!fontFilePath) {
