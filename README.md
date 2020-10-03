@@ -20,14 +20,7 @@ const JotoSVG = require('joto-svg');
 
 const joto = new JotoSVG();
 
-const cityName = 'Paris, France';
-joto.addString({
-  x: 250 - cityName.length * 6,
-  y: 40,
-  size: 30,
-  str: cityName,
-  align: 'center',
-});
+joto.addString({ x: 250, y: 40, size: 30, str: 'Paris, France', align: 'center' });
 
 const svg = joto.getSVG();
 fs.writeFileSync('./joto.svg', svg, { encoding: 'utf8' });
