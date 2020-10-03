@@ -49,7 +49,8 @@ module.exports = function (fontOveride, str, size, align, lineHeight, color, x, 
       .round(2)
       .toString();
 
-    return `<path fill="none" stroke="#000000" d="${transformed}"/>`;
+    return transformed;
+    // return `<path fill="none" stroke="#000000" d="${transformed}"/>`;
   });
 
   let allPaths = processedPaths.join('');

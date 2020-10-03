@@ -23,10 +23,10 @@ module.exports = function Joto() {
   };
 
   return {
-    addString({ x, y, size, angle = 0, str, align }) {
-      const path = stringToSVG(null, str, size, align, 1, null, x, y, 1, angle);
+    addString({ size, str, ...position }) {
+      const path = stringToSVG(null, str, size, 'left', 1, null, 0, 0, 1, 0);
 
-      paths.push(path);
+      this.addPath({ d: path, ...position });
     },
     addOutlineString({ size, str, fontFilePath, ...position }) {
       if (!fontFilePath) {
@@ -41,16 +41,16 @@ module.exports = function Joto() {
 
       this.addPath({ d, ...position });
     },
-    addFAIconXY({ x, y, size, angle = 0, icon }) {
+    addFAIconXY({ size, icon, ...position }) {
       if (!icon.icon) {
         throw new Error("addFAIconXY: icon.icon doesn't exist, are you sure you passed a font-awesome icon?");
       }
 
       const iconPath = icon.icon[icon.icon.length - 1];
 
-      this.addPath({ x, y, d: iconPath, width: size, angle });
+      this.addPath({ d: iconPath, width: size, ...position });
     },
-    addPath({ x, y, d, height, width, angle = 0 }) {
+    addPath({ x, y, d, height, width, angleDegrees = 0, align = 'left' }) {
       const boundingBox = getBoundingBox(d);
 
       const originalWidth = boundingBox.width;
@@ -61,15 +61,19 @@ module.exports = function Joto() {
       const scaleHeight = height ? height / originalHeight : width ? width / originalWidth : 1;
       const scaleWidth = width ? width / originalWidth : height ? height / originalHeight : 1;
 
-      const transformed = svgpath(d)
-        .translate(-left, -top)
-        .scale(scaleWidth, scaleHeight)
-        .translate(x, y)
-        .rotate(angle)
-        .round(2)
-        .toString();
+      const transformed = svgpath(d).translate(-left, -top).scale(scaleWidth, scaleHeight);
+      if (align === 'left') {
+        transformed.translate(x, y);
+      } else if (align === 'center') {
+        transformed.translate(x - (originalWidth * scaleWidth) / 2, y);
+      } else if (align === 'right') {
+        transformed.translate(x - originalWidth * scaleWidth, y);
+      } else {
+        throw new Error('align must be left, center or right');
+      }
+      transformed.rotate(angleDegrees).round(2);
 
-      paths.push(`<path fill="none" stroke="#000000" d="${transformed}"/>`);
+      paths.push(`<path fill="none" stroke="#000000" d="${transformed.toString()}" />`);
     },
     addChart({
       position: { x, y, height, width },
