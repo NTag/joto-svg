@@ -43,3 +43,7 @@ Check `examples/` folder.
 ## Acknowledgment
 
 Code in `./joto-text` comes from Joto's webapp; I made some small changes so it works in a node environment, but all credits go to Joto.
+
+## Related packages
+
+- [joto-api](https://github.com/NTag/joto-api): send SVGs to your Joto with NodeJS
