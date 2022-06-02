@@ -35,7 +35,7 @@ Typr.U.codeToGlyph = function (font, code) {
     if (tab.idRangeOffset[sind] != 0)
       gli =
         tab.glyphIdArray[
-          code - tab.startCount[sind] + (tab.idRangeOffset[sind] >> 1) - (tab.idRangeOffset.length - sind)
+        code - tab.startCount[sind] + (tab.idRangeOffset[sind] >> 1) - (tab.idRangeOffset.length - sind)
         ];
     else {
       gli = code + tab.idDelta[sind];
@@ -464,24 +464,26 @@ Typr.U.glyphsToPath = function (font, gls, lineHeight, align, clr) {
   let x = 0;
   let y = 0;
 
-  switch (align) {
-    case 'left':
-      x = 0;
-      y = lineOffsets[0].y;
-      break;
-    case 'center':
-      x = lineOffsets[0].x;
-      y = lineOffsets[0].y;
-      break;
-    // case "right":
-    // 	console.log(longestLine);
-    // 	console.log(lineOffsets[0].x);
-    // 	x = longestLine-lineOffsets[0].x;
-    // 	console.log(x);
-    // 	y = lineOffsets[0].y;
-    //break;
-  }
+  if (lineTotals.length != 0) {
+    switch (align) {
+      case 'left':
+        x = 0;
+        y = lineOffsets[0].y;
+        break;
+      case 'center':
+        x = lineOffsets[0].x;
+        y = lineOffsets[0].y;
+        break;
+      // case "right":
+      // 	console.log(longestLine);
+      // 	console.log(lineOffsets[0].x);
+      // 	x = longestLine-lineOffsets[0].x;
+      // 	console.log(x);
+      // 	y = lineOffsets[0].y;
+      //break;
+    }
 
+  }
   let line = 1;
 
   for (let i = 0; i < gls.length; i++) {
