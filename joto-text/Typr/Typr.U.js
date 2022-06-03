@@ -464,26 +464,25 @@ Typr.U.glyphsToPath = function (font, gls, lineHeight, align, clr) {
   let x = 0;
   let y = 0;
 
-  if (lineTotals.length != 0) {
-    switch (align) {
-      case 'left':
-        x = 0;
-        y = lineOffsets[0].y;
-        break;
-      case 'center':
-        x = lineOffsets[0].x;
-        y = lineOffsets[0].y;
-        break;
-      // case "right":
-      // 	console.log(longestLine);
-      // 	console.log(lineOffsets[0].x);
-      // 	x = longestLine-lineOffsets[0].x;
-      // 	console.log(x);
-      // 	y = lineOffsets[0].y;
-      //break;
-    }
-
+  switch (align) {
+    case 'left':
+      x = 0;
+      y = lineOffsets.length != 0 ? lineOffsets[0].y : 0;
+      break;
+    case 'center':
+      x = lineOffsets.length != 0 ? lineOffsets[0].x : 0;
+      y = lineOffsets.length != 0 ? lineOffsets[0].y : 0;
+      break;
+    // case "right":
+    // 	console.log(longestLine);
+    // 	console.log(lineOffsets[0].x);
+    // 	x = longestLine-lineOffsets[0].x;
+    // 	console.log(x);
+    // 	y = lineOffsets[0].y;
+    //break;
   }
+
+
   let line = 1;
 
   for (let i = 0; i < gls.length; i++) {
